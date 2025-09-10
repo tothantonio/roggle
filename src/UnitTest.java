@@ -1,15 +1,37 @@
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
-public class Main {
-    public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
+import utils.StdOut;
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
-        }
+public class UnitTest {
+    public static void main(String[] args) {
+        StdOut.println("Board:");
+
+        BoggleBoard board1 = new BoggleBoard();
+        StdOut.println(board1);
+
+        StdOut.println();
+
+        StdOut.println("Random 4-by-4 board:");
+
+        BoggleBoard board2 = new BoggleBoard(4, 4);
+        StdOut.println(board2);
+
+        StdOut.println();
+
+        StdOut.println("4-by-4 board from 2d array:");
+        char[][] array = {
+                { 'D', 'O', 'T', 'Y' },
+                { 'T', 'R', 'S', 'F' },
+                { 'M', 'X', 'M', 'O' },
+                { 'Z', 'A', 'B', 'W' }
+        };
+
+        BoggleBoard board3 = new BoggleBoard(array);
+        StdOut.println(board3);
+        StdOut.println();
+
+        String fileName = "board4x4.txt";
+
+        StdOut.println("4-by-4 board from a file:");
+        BoggleBoard board4 = new BoggleBoard(fileName);
+        StdOut.println(board4);
     }
 }
