@@ -1,3 +1,5 @@
+package main;
+
 import utils.In;
 import utils.StdRandom;
 
@@ -68,8 +70,8 @@ public class BoggleBoard {
     // Initializes a board from a file
     public BoggleBoard(String fileName) {
         In in = new In(fileName);
-        int m = in.readInt();
-        int n = in.readInt();
+        m = in.readInt();
+        n = in.readInt();
 
         if(m <= 0) throw new IllegalArgumentException("error, m needs to be greater than 0");
         if(n <= 0) throw new IllegalArgumentException("error, n needs to be greater than 0");

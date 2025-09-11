@@ -1,3 +1,6 @@
+package test;
+
+import main.BoggleBoard;
 import utils.StdOut;
 
 public class UnitTest {
@@ -28,7 +31,7 @@ public class UnitTest {
         StdOut.println(board3);
         StdOut.println();
 
-        String fileName = "board4x4.txt";
+        String fileName = "src/boards/board5x5";
 
         StdOut.println("4-by-4 board from a file:");
         BoggleBoard board4 = new BoggleBoard(fileName);
