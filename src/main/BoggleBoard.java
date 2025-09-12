@@ -130,7 +130,7 @@ public class BoggleBoard {
         return board[row][col];
     }
 
-    // Returns a string representation of the board, replacing "C" with "CE"
+    // Returns a string representation of the board
     public String toString() {
         StringBuilder sb = new StringBuilder(m + " " + n + "\n");
         for(int i = 0; i < m; i++) {

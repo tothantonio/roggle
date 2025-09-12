@@ -12,9 +12,9 @@ public class UnitTest {
 
         StdOut.println();
 
-        StdOut.println("Random 4-by-4 board:");
+        StdOut.println("Random 10-by-10 board:");
 
-        BoggleBoard board2 = new BoggleBoard(4, 4);
+        BoggleBoard board2 = new BoggleBoard(10, 10);
         StdOut.println(board2);
 
         StdOut.println();
