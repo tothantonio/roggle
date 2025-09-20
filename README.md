@@ -1,4 +1,4 @@
-## roggle - romanian "boggle" game version
+## roggle - romanian "boggle" game version with 50k word dictionary
 
 
 Preview:
