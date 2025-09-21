@@ -23,18 +23,23 @@ public class BoggleGUI {
         String[] dict = in.readAllStrings();
         solver = new BoggleSolver(dict);
 
+        // Initializez frame ul
         JFrame frame = new JFrame("Boggle");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(600, 700);
+        frame.setSize(500, 600);
         frame.setLayout(new BorderLayout());
 
+        // Creez tabla
         currBoard = new BoggleBoard();
         boardPanel = createBoardPanel(new BoggleBoard());
 
+        // Butoane pentru check si reset
         JPanel inputPanel = new JPanel();
         JTextField wordField = new JTextField(12);
         JButton checkButton = new JButton("Check Word");
+        checkButton.setFont(new Font("Times New Roman", Font.BOLD, 15));
         JButton resetButton = new JButton("Reset Board");
+        resetButton.setFont(new Font("Times New Roman", Font.BOLD, 15));
 
         inputPanel.add(wordField);
         inputPanel.add(checkButton);
@@ -47,7 +52,13 @@ public class BoggleGUI {
         statsLabel.setHorizontalAlignment(SwingConstants.CENTER);
         updateStats();
 
-        frame.add(boardPanel, BorderLayout.CENTER);
+//        frame.add(boardPanel, BorderLayout.CENTER);
+        // changed how i add the board panel to the frame
+        // used a gridbaglayout for centering
+        JPanel centerWrapper = new JPanel(new GridBagLayout());
+        centerWrapper.add(boardPanel);
+        frame.add(centerWrapper, BorderLayout.CENTER);
+
         frame.add(inputPanel, BorderLayout.SOUTH);
 
         JPanel northPanel = new JPanel(new GridLayout(2, 1));
@@ -66,7 +77,9 @@ public class BoggleGUI {
             if(score > 0) {
                 totalScore += score;
                 resultLabel.setText(word + " Valid! + " + score + " puncte | Total: " + totalScore);
-            } else {
+            } else if(score == 0){
+                resultLabel.setText(word + " A fost deja introdus! + " + score + " puncte | Total: " + totalScore);
+            }else if(score == -1){
                 resultLabel.setText(word + " Nu este valid!");
             }
             wordField.setText("");
@@ -83,6 +96,7 @@ public class BoggleGUI {
             frame.repaint();
         });
 
+        frame.setLocationRelativeTo(null);
         frame.setVisible(true);
     }
     private JPanel createBoardPanel(BoggleBoard board) {
@@ -90,11 +104,12 @@ public class BoggleGUI {
         for(int i = 0; i < board.getRows(); i++) {
             for(int j = 0; j < board.getColumns(); j++) {
                 JButton button = new JButton(String.valueOf(board.getLetter(i, j)));
-                button.setFont(new Font("Arial", Font.BOLD, 24));
+                button.setFont(new Font("Times New Roman", Font.BOLD, 18));
                 button.setEnabled(false);
                 panel.add(button);
             }
         }
+        panel.setPreferredSize(new Dimension(280, 280));
         return panel;
     }
 

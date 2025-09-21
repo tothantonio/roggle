@@ -6,6 +6,7 @@ import java.util.stream.Collectors;
 
 public class BoggleSolver {
     private Set<String> validWords = new HashSet<>();
+    private Set<String> usedWords = new HashSet<>();
     private final Set<String> dictionarySet;
 
     // Initializes the data structure using the dictionary
@@ -18,6 +19,7 @@ public class BoggleSolver {
 
     // Returns the set of all valid words
     public Iterable<String> getAllValidWords(BoggleBoard board){
+        validWords.clear();
         int rows = board.getRows();
         int cols = board.getColumns();
         boolean[][] visited = new boolean[rows][cols];
@@ -57,12 +59,18 @@ public class BoggleSolver {
 
     // Returns the score of the word, if it exists, 0 otherwise
     public int score(String word) {
-        if(!dictionarySet.contains(word)) {
+        int size = word.length();
+
+        if(!dictionarySet.contains(word) || size < 3) {
+            return -1;
+        }
+
+        if(usedWords.contains(word)) {
             return 0;
         }
 
-        int size = word.length();
-        if(size < 3) return 0;
+        usedWords.add(word);
+
         if(size <= 4) return 1;
         if(size == 5) return 2;
         if(size == 6) return 3;
