@@ -7,3 +7,5 @@ Preview:
 ![img2](public/img.png)
 
 ![img3](public/img3.png)
+
+![img4](public/proiect_boggle_structura.png)
